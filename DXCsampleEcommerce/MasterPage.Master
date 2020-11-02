@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="DXCsampleEcommerce.MasterPage" %>
+
+<link href="StyleSheet1.css" rel="stylesheet" />
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>ABC Shopping-ECommerce Site</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    </head>
+
+    <body>  
+ 
+        <form id="form1" runat="server">
+ 
+<nav id="nav">  
+    <ul>  
+        <li style="font-size:21px;font-display:block;color:lightgray">ABC Shopping</li>
+        <li><a href="home.aspx">Home</a></li>  
+        <li><a href="#">About</a></li>  
+          
+        <li><a href="#">Contact</a></li>  
+    </ul>  
+</nav>  
+<aside id="sidenavbar" style="float:left">
+   
+    
+      <div style="text-align:justify">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource2" GridLines="None" Width="188px"   ForeColor="#333333" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Height="490px" >
+            <%--<AlternatingRowStyle BackColor="White" ForeColor="#284775" />--%>
+            <%--CssClass="auto-style1" --%>
+
+            <Columns>
+              <%--  <asp:BoundField DataField="CategoryID" HeaderText="CategoryID" InsertVisible="False" SortExpression="CategoryID" />--%>
+                  <asp:HyperLinkField DataTextField="CategoryName" DataNavigateUrlFields="CategoryID" DataNavigateUrlFormatString="WebForm2.aspx?CategoryID={0}"  HeaderText="Categories" SortExpression="CategoryName"  ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Left"/>
+
+              
+            </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+             
+            <PagerStyle BackColor="#284775" ForeColor="White" VerticalAlign="Middle" HorizontalAlign="Left"/>
+            <RowStyle  BackColor="#F7F6F3" ForeColor="#333333" VerticalAlign="Middle" HorizontalAlign="Left" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
+          <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString7 %>" ProviderName="<%$ ConnectionStrings:ConnectionString7.ProviderName %>" SelectCommand="SELECT [CategoryID], [CategoryName] FROM [Category]"></asp:SqlDataSource>
+   </div>
+   
+    <br />
+     
+    <br />
+    <br />
+    <br />
+   
+</aside>  
+    
+   
+  
+    <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+  
+  
+    <footer id="footer" >  
+   <p>&copy; <%: DateTime.Now.Year %> - ABC Shopping | All Rights Reserved </p>
+</footer> 
+        </form>
+</body>  
+
+</html>
+
+
+
+
+
