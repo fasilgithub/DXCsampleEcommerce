@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="WebForm6.aspx.cs" Inherits="DXCsampleEcommerce.WebForm6" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="EditProduct.aspx.cs" Inherits="DXCsampleEcommerce.WebForm6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -97,13 +97,13 @@
                 </tr>
                 <tr>
                     <td class="auto-style5" colspan="2"  align="center">
-                        &nbsp;&nbsp;&nbsp;<asp:Label ID="Label2" runat="server"></asp:Label></td>
+                        &nbsp;&nbsp;&nbsp;<asp:Label ID="Label2" ForeColor="#339933" runat="server"></asp:Label></td>
                     <td>&nbsp;</td>
                 </tr>
 
                   <tr>
                     <td class="auto-style8" >
-                        <asp:HyperLink ID="HyperLink1" href="/WebForm6.aspx" runat="server">Edit Another</asp:HyperLink> </td>
+                        <asp:HyperLink ID="HyperLink1" href="/EditProduct.aspx" runat="server">Edit Another</asp:HyperLink> </td>
                       <td style="text-align:Center">
                        
                         <asp:HyperLink ID="HyperLink2" runat="server"  NavigateUrl="~/WebForm1.aspx"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Back To Home Page</asp:HyperLink></td>

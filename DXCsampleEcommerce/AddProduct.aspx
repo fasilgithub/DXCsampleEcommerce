@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="WebForm5.aspx.cs" Inherits="DXCsampleEcommerce.WebForm5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="DXCsampleEcommerce.WebForm5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -129,7 +129,7 @@
                 </tr>
                 <tr>
                     <td >
-                        <asp:HyperLink ID="HyperLink1" href="/WebForm5.aspx" runat="server">Add Another Product</asp:HyperLink> </td>
+                        <asp:HyperLink ID="HyperLink1" href="/AddProduct.aspx" runat="server">Add Another Product</asp:HyperLink> </td>
                    
                     <td style="text-align:center">
                        

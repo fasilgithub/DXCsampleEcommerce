@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="WebForm7.aspx.cs" Inherits="DXCsampleEcommerce.WebForm7" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddCategory.aspx.cs" Inherits="DXCsampleEcommerce.WebForm7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -51,12 +51,13 @@
                 <tr>
                     <td align="center" colspan="2">
                         <asp:Label ID="Label1" runat="server" BorderStyle="None" ForeColor="#339933" ></asp:Label>
+                        <asp:Label ID="Label3" runat="server" BorderStyle="None" ForeColor="Red" ></asp:Label>
                         </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td >
-                        <asp:HyperLink ID="HyperLink1" href="/WebForm7.aspx" runat="server">Add Another Category</asp:HyperLink> </td>
+                        <asp:HyperLink ID="HyperLink1" href="/AddCategory.aspx" runat="server">Add Another Category</asp:HyperLink> </td>
                    
                     <td style="text-align:center">
                        

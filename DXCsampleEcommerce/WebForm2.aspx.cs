@@ -43,17 +43,17 @@ namespace DXCsampleEcommerce
 
         protected void Add_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm5.aspx");
+            Response.Redirect("AddProduct.aspx");
         }
 
         protected void Edit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm6.aspx");
+            Response.Redirect("EditProduct.aspx");
         }
 
         protected void Catogory_Add_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm7.aspx");
+            Response.Redirect("AddCategory.aspx");
         }
     }
 }

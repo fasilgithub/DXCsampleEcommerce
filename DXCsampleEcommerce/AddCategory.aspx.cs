@@ -68,18 +68,35 @@ namespace DXCsampleEcommerce
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            String query = "insert into Category(CategoryID,CategoryName) values(" + Label2.Text + ",'" + TextBox5.Text + "')";
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
-            con.Open();
+            //String query = "insert into Category(CategoryID,CategoryName) values(" + Label2.Text + ",'" + TextBox5.Text + "')";
+
+            String query = "insert into Category(CategoryID,CategoryName) values(@CategoryID,@CategoryName)";
             OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = query;
-            cmd.Connection = con;
-            cmd.ExecuteNonQuery();
-            getcategoryid();
-            Label1.Text = "Category Has Been Successfully Added";
-            Label2.Text = "";
-            TextBox5.Text = "";
-           
+            cmd.Parameters.AddWithValue("@CategoryID", Label2.Text);
+            cmd.Parameters.AddWithValue("@CategoryName", TextBox5.Text);
+
+            if (TextBox5.Text == "")
+            {
+                Label3.Text = "Please Enter Category Name !";
+            }
+            else
+            {
+
+
+                OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                con.Open();
+
+                cmd.CommandText = query;
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+                getcategoryid();
+                Label1.Text = "Category Has Been Successfully Added";
+                Label2.Text = "";
+                Label3.Text = "";
+                TextBox5.Text = "";
+
+
+            }
         }
 
         protected void TextBox5_TextChanged(object sender, EventArgs e)
