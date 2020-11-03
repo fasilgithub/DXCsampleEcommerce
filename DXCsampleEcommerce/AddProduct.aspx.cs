@@ -14,6 +14,7 @@ namespace DXCsampleEcommerce
     {
 
         static String imagelink;
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -22,7 +23,7 @@ namespace DXCsampleEcommerce
             {
                 getproductid();
 
-                OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                OleDbConnection con = new OleDbConnection(connStr);
                 con.Open();
 
                 OleDbCommand cmd = new OleDbCommand();
@@ -105,7 +106,7 @@ namespace DXCsampleEcommerce
 
 
 
-                    OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                    OleDbConnection con = new OleDbConnection(connStr);
                     con.Open();
                     // OleDbCommand cmd = new OleDbCommand();
                     cmd.CommandText = query;
@@ -168,7 +169,7 @@ namespace DXCsampleEcommerce
         public void getproductid()
         {
 
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+            OleDbConnection con = new OleDbConnection(connStr);
             OleDbCommand cmd = new OleDbCommand();
             String myquery = "select ProductID from Product";
 
@@ -189,7 +190,7 @@ namespace DXCsampleEcommerce
             {
 
 
-                OleDbConnection con1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                OleDbConnection con1 = new OleDbConnection(connStr);
 
 
 

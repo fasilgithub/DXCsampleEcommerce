@@ -6,11 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace DXCsampleEcommerce
 {
     public partial class WebForm7 : System.Web.UI.Page
     {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,7 +26,7 @@ namespace DXCsampleEcommerce
         public void getcategoryid()
         {
 
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+            OleDbConnection con = new OleDbConnection(connStr);
             OleDbCommand cmd = new OleDbCommand();
             String myquery = "select CategoryID from Category";
 
@@ -44,7 +47,7 @@ namespace DXCsampleEcommerce
             {
 
 
-                OleDbConnection con1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                OleDbConnection con1 = new OleDbConnection(connStr);
 
 
 
@@ -83,7 +86,7 @@ namespace DXCsampleEcommerce
             {
 
 
-                OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+                OleDbConnection con = new OleDbConnection(connStr);
                 con.Open();
 
                 cmd.CommandText = query;

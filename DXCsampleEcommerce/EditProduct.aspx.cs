@@ -6,11 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace DXCsampleEcommerce
 {
+    
     public partial class WebForm6 : System.Web.UI.Page
     {
+
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
         public OleDbConnection con;
        public OleDbDataAdapter dad;
        // public OleDbCommand com;
@@ -44,7 +49,7 @@ namespace DXCsampleEcommerce
             TextBox8.Text = "";
 
 
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+            OleDbConnection con = new OleDbConnection(connStr);
             con.Open();
             String data1;
           
@@ -77,7 +82,7 @@ namespace DXCsampleEcommerce
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+            OleDbConnection con = new OleDbConnection(connStr);
             con.Open();
             String data1;
             //data1 = "Update Product set ProductName='" + TextBox5.Text + "', BrandName= '" + TextBox4.Text + "', Stock='" + TextBox3.Text + "', Price='" + TextBox2.Text + "', Discount='" + TextBox6.Text + "', CategoryID='" + TextBox7.Text + "', Description='" + TextBox8.Text + "' where ProductID=" + TextBox1.Text;

@@ -6,11 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace DXCsampleEcommerce
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         
             {
@@ -27,7 +31,7 @@ namespace DXCsampleEcommerce
             {
 
             string CategoryID = Request.QueryString["CategoryID"];
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
+            OleDbConnection con = new OleDbConnection(connStr);
             string query = "select * from Product where CategoryID=" + CategoryID;
                 OleDbCommand cmd = new OleDbCommand(query, con);
                 OleDbDataAdapter olda = new OleDbDataAdapter(cmd);
