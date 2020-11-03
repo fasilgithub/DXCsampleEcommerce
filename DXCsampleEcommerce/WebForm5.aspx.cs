@@ -90,10 +90,24 @@ namespace DXCsampleEcommerce
 
             if (uploadimage() == true)
             {
-                String query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(" + Label2.Text + ",'" + TextBox5.Text + "','" + TextBox4.Text + "','" + TextBox3.Text + "','" + TextBox2.Text + "','" + TextBox1.Text + "','" + TextBox7.Text + "','" + imagelink + "','" + DropDownList1.SelectedItem.Value + "')";
+                //String query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(" + Label2.Text + ",'" + TextBox5.Text + "','" + TextBox4.Text + "','" + TextBox3.Text + "','" + TextBox2.Text + "','" + TextBox1.Text + "','" + TextBox7.Text + "','" + imagelink + "','" + DropDownList1.SelectedItem.Value + "')";
+                OleDbCommand cmd = new OleDbCommand();
+                String query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(@ProductID,@ProductName,@BrandName,@Stock,@Price,@Discount,@Description,@ImagePath,@CategoryID)";
+                cmd.Parameters.AddWithValue("@ProductID", Label2.Text);
+                cmd.Parameters.AddWithValue("@ProductName", TextBox5.Text);
+                cmd.Parameters.AddWithValue("@BrandName", TextBox4.Text);
+                cmd.Parameters.AddWithValue("@Stock", TextBox3.Text);
+                cmd.Parameters.AddWithValue("@Price", TextBox2.Text);
+                cmd.Parameters.AddWithValue("@Discount", TextBox1.Text);
+                cmd.Parameters.AddWithValue("@Description", TextBox7.Text);
+                cmd.Parameters.AddWithValue("@ImagePath", imagelink);
+                cmd.Parameters.AddWithValue("@CategoryID", DropDownList1.SelectedItem.Value);
+
+
+
                 OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
                 con.Open();
-                OleDbCommand cmd = new OleDbCommand();
+               // OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = query;
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();

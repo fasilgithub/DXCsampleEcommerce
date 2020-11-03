@@ -12,8 +12,8 @@ namespace DXCsampleEcommerce
     public partial class WebForm6 : System.Web.UI.Page
     {
         public OleDbConnection con;
-        public OleDbDataAdapter dad;
-        public OleDbCommand com;
+       public OleDbDataAdapter dad;
+       // public OleDbCommand com;
         public DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -80,9 +80,28 @@ namespace DXCsampleEcommerce
             OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\mb74\OneDrive - DXC Production\Desktop\personal\DXCSampleEcommerceProject\MSAccessDAtabase\db1.accdb");
             con.Open();
             String data1;
-            data1 = "Update Product set ProductName='" + TextBox5.Text + "', BrandName= '" + TextBox4.Text + "', Stock='" + TextBox3.Text + "', Price='" + TextBox2.Text + "', Discount='" + TextBox6.Text + "', CategoryID='" + TextBox7.Text + "', Description='" + TextBox8.Text + "' where ProductID=" + TextBox1.Text;
-            com = new OleDbCommand(data1, con);
-            com.ExecuteNonQuery();
+            //data1 = "Update Product set ProductName='" + TextBox5.Text + "', BrandName= '" + TextBox4.Text + "', Stock='" + TextBox3.Text + "', Price='" + TextBox2.Text + "', Discount='" + TextBox6.Text + "', CategoryID='" + TextBox7.Text + "', Description='" + TextBox8.Text + "' where ProductID=" + TextBox1.Text;
+
+             OleDbCommand cmd = new OleDbCommand();
+            
+            data1 = "Update Product set ProductName=@ProductName, BrandName=@BrandName, Stock=@Stock, Price=@Price, Discount=@Discount, CategoryID=@CategoryID, Description=@Description where ProductID=@ProductID";
+            cmd = new OleDbCommand(data1, con);
+
+            cmd.Parameters.AddWithValue("@ProductName", TextBox5.Text);
+            cmd.Parameters.AddWithValue("@BrandName", TextBox4.Text);
+            cmd.Parameters.AddWithValue("@Stock", TextBox3.Text);
+            cmd.Parameters.AddWithValue("@Price", TextBox2.Text);
+            cmd.Parameters.AddWithValue("@Discount", TextBox6.Text);
+           
+            cmd.Parameters.AddWithValue("@CategoryID", TextBox7.Text);
+            cmd.Parameters.AddWithValue("@Description", TextBox8.Text);
+            cmd.Parameters.AddWithValue("@ProductID", TextBox1.Text);
+
+
+
+
+          
+            cmd.ExecuteNonQuery();
             Label2.Text = "Data has been Updated Successfully for ProductID " + TextBox1.Text;
             TextBox1.Text = "";
             TextBox2.Text = "";
