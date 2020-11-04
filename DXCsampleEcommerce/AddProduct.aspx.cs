@@ -157,14 +157,14 @@ namespace DXCsampleEcommerce
                 }
                 else
                 {
-                    Label1.Text = "Kindly Upload JPEG Format Image Only";
+                    Label3.Text = "Kindly Upload JPEG Format Image Only";
                 }
 
             }
 
             else
             {
-                Label1.Text = "You have not selected any file - Browse and Select File First";
+                Label3.Text = "You have not selected any file - Browse and Select File First";
             }
 
             return imagesaved;
