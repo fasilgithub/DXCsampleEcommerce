@@ -85,8 +85,12 @@ namespace DXCsampleEcommerce
         protected void Button1_Click1(object sender, EventArgs e)
         {
 
-       
-            
+         if((TextBox5.Text=="") || (TextBox4.Text == "") || (TextBox3.Text == "") || (TextBox2.Text == "") || (TextBox1.Text == "") || (TextBox7.Text == ""))
+            {
+                Label3.Text = "Please enter data in all fields";
+            }
+            else
+            {
 
 
                 if (uploadimage() == true)
@@ -115,6 +119,7 @@ namespace DXCsampleEcommerce
                     getproductid();
                     Label1.Text = "Product Has Been Successfully Added";
                     Label2.Text = "";
+                    Label3.Text = "";
                     TextBox5.Text = "";
                     TextBox4.Text = "";
                     TextBox3.Text = "";
@@ -127,7 +132,7 @@ namespace DXCsampleEcommerce
 
                     //Response.AppendHeader("Refresh", "2;url=WebForm1.aspx");
 
-
+                }
                 
 
             }

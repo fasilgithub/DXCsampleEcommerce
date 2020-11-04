@@ -124,6 +124,7 @@
                 <tr>
                     <td align="center" colspan="2">
                         <asp:Label ID="Label1" runat="server" BorderStyle="None" ForeColor="#339933" ></asp:Label>
+                        <asp:Label ID="Label3" runat="server" BorderStyle="None" ForeColor="Red"></asp:Label>
                         </td>
                     <td></td>
                 </tr>
