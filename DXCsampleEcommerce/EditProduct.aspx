@@ -21,7 +21,7 @@
      <div>
             <table align="center" id="0" border="0" class="auto-style7">
                 <tr>
-                    <td colspan="2" align="Center"><h1><b>Edit Product Details</b></h1></td>
+                    <td colspan="2" align="Center"><h3><b>Edit Product Details</b></h3></td>
                     
                 </tr>
                 <tr>
@@ -29,8 +29,8 @@
                     <td >
                        
                         <asp:TextBox ID="TextBox1" runat="server" Height="38px" Width="350px"></asp:TextBox>
-                   
-                        <asp:Button ID="Button1" runat="server" Height="25px" Text="SEARCH" Width="80px" OnClick="Button1_Click" />
+                  
+                        <asp:Button ID="Button1"  runat="server"  Text="Search"  OnClick="Button1_Click" />
                         <br />
 
                         <asp:Label ID="Label1" runat="server"></asp:Label>
@@ -91,7 +91,7 @@
 
                 <tr>
                     <td class="auto-style2" colspan="2" align="center" >
-                        <asp:Button ID="Button2" runat="server" Text="Save&Update" OnClick="Button2_Click" />
+                        <asp:Button ID="Button2"  runat="server" Text="Save&Update"  OnClick="Button2_Click" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>

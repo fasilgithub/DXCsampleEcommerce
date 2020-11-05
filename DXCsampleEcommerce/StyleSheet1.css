@@ -5,17 +5,17 @@
     font-size: 20px;
 }
 
-#nav {
+/*#nav {
     background-color: #323232;
     padding: 2px;
 }
-
+*/
 ul {
     list-style-type: none;
 }
 
 li a {
-    color: #F1FAEE;
+  /*  color: #F1FAEE;*/
     font-size: 15px;
     column-width: 5%;
 }
@@ -28,12 +28,13 @@ li {
 
 a {
     text-decoration: none;
-    margin-left: 20px
+    margin-left: 20px;
+    color:darkblue
 }
 
 li a:hover {
-    background-color: #f3ffbd;
-    color: #ff1654;
+/*    background-color: #f3ffbd;
+    color: #ff1654;*/
     padding: 1%;
 }
 
@@ -47,11 +48,11 @@ li a:hover {
 /*}*/
 
 #sidenavbar {
-    text-align:left;
+    text-align: left;
     float: right;
     width: 15%;
-    
-    background-color: #F7F6F3
+   background-color:whitesmoke
+    /* background-color: #F7F6F3*/
 }
 /*#article {
     background-color: #EEF5DB;
