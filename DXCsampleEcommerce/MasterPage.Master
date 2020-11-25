@@ -9,18 +9,14 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.0.0.min.js"></script>
 <script src="Scripts/bootstrap.min.js"></script>
-    <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="master.css" rel="stylesheet" />
 
     <title>ABC Shopping-ECommerce Site</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     </head>
-
     <body>  
- 
         <form id="form1" runat="server">
- 
-
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#323232">
   <a class="navbar-brand" href="#" style="color:dimgrey"><b>ABC Shopping</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +28,7 @@
         <a class="nav-link" href="/WebForm1.aspx">Home <span class="sr-only">(current)</span></a>
       </li>--%>
         <li class="nav-item">
-        <a class="nav-link" href="/WebForm1.aspx">Home</a>
+        <a class="nav-link" href="/default.aspx">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="">About</a>
@@ -60,13 +56,25 @@
 
 
              <script type = "text/javascript">
-         <!--
-            function getValue() {
-               var retVal = prompt("Enter your Password : ", "your Password here");
-               //document.write("You have entered : " + retVal);
-            }
-         //-->
-      </script>
+         
+                 function getValue()
+                 {
+
+                    
+
+                     if (!sessionStorage.getItem('firstVisit') == '1')
+                     {
+                         sessionStorage.setItem('firstVisit', '1');
+                         var retVal = prompt("Enter your Password : ", "your Password here");
+                         
+                         //document.write("You have entered : " + retVal);
+                     }
+                     
+                       
+                  }
+         
+             </script>
+            
       
   
 
@@ -94,7 +102,7 @@
 
             <Columns>
               <%--  <asp:BoundField DataField="CategoryID" HeaderText="CategoryID" InsertVisible="False" SortExpression="CategoryID" />--%>
-                  <asp:HyperLinkField DataTextField="CategoryName" DataNavigateUrlFields="CategoryID" DataNavigateUrlFormatString="WebForm2.aspx?CategoryID={0}"  HeaderText="Categories" SortExpression="CategoryName"  ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Justify"/>
+                  <asp:HyperLinkField DataTextField="CategoryName" DataNavigateUrlFields="CategoryID" DataNavigateUrlFormatString="ProductList.aspx?CategoryID={0}"  HeaderText="Categories" SortExpression="CategoryName"  ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Justify"/>
 
               
             </Columns>

@@ -13,76 +13,37 @@ namespace DXCsampleEcommerce
     public partial class WebForm5 : System.Web.UI.Page
     {
 
-        static String imagelink;
-        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-
+        static string imageLink;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                getproductid();
+                GetProductId();
 
-                OleDbConnection con = new OleDbConnection(connStr);
+                OleDbConnection con = new OleDbConnection(connectionString);
                 con.Open();
-
                 OleDbCommand cmd = new OleDbCommand();
-                String myquery = "select * from Category";
-
-                cmd.CommandText = myquery;
+                string query = "select * from Category";
+                cmd.CommandText = query;
                 cmd.Connection = con;
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-
                 DataSet ds = new DataSet();
-                da.Fill(ds);  // fill dataset
-                DropDownList1.DataTextField = ds.Tables[0].Columns["CategoryName"].ToString(); // text field name of table dispalyed in dropdown
-                DropDownList1.DataValueField = ds.Tables[0].Columns["CategoryID"].ToString();             // to retrive specific  textfield name 
-                DropDownList1.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist
-                DropDownList1.DataBind();  //binding dropdownlist
-
+                da.Fill(ds); 
+                // Fill dataset
+                DropDownList1.DataTextField = ds.Tables[0].Columns["CategoryName"].ToString(); 
+                // Text field name of table dispalyed in dropdown
+                DropDownList1.DataValueField = ds.Tables[0].Columns["CategoryID"].ToString();             
+                // To retrive specific  textfield name 
+                DropDownList1.DataSource = ds.Tables[0];      
+                // Assigning datasource to the dropdownlist
+                DropDownList1.DataBind();  
+                // Binding dropdownlist
             }
-
-           // string constr = ConfigurationManager.ConnectionStrings["binddropdown"].ToString(); // connection string
-           
-
         }
 
-        protected void TextBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void AddButton_Click(object sender, EventArgs e)
         {
 
          if((TextBox5.Text=="") || (TextBox4.Text == "") || (TextBox3.Text == "") || (TextBox2.Text == "") || (TextBox1.Text == "") || (TextBox7.Text == ""))
@@ -91,13 +52,10 @@ namespace DXCsampleEcommerce
             }
             else
             {
-
-
-                if (uploadimage() == true)
+                if (UploadImage() == true)
                 {
-                    //String query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(" + Label2.Text + ",'" + TextBox5.Text + "','" + TextBox4.Text + "','" + TextBox3.Text + "','" + TextBox2.Text + "','" + TextBox1.Text + "','" + TextBox7.Text + "','" + imagelink + "','" + DropDownList1.SelectedItem.Value + "')";
                     OleDbCommand cmd = new OleDbCommand();
-                    String query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(@ProductID,@ProductName,@BrandName,@Stock,@Price,@Discount,@Description,@ImagePath,@CategoryID)";
+                    string query = "insert into Product(ProductID,ProductName,BrandName,Stock,Price,Discount,Description,ImagePath,CategoryID) values(@ProductID,@ProductName,@BrandName,@Stock,@Price,@Discount,@Description,@ImagePath,@CategoryID)";
                     cmd.Parameters.AddWithValue("@ProductID", Label2.Text);
                     cmd.Parameters.AddWithValue("@ProductName", TextBox5.Text);
                     cmd.Parameters.AddWithValue("@BrandName", TextBox4.Text);
@@ -105,18 +63,15 @@ namespace DXCsampleEcommerce
                     cmd.Parameters.AddWithValue("@Price", TextBox2.Text);
                     cmd.Parameters.AddWithValue("@Discount", TextBox1.Text);
                     cmd.Parameters.AddWithValue("@Description", TextBox7.Text);
-                    cmd.Parameters.AddWithValue("@ImagePath", imagelink);
+                    cmd.Parameters.AddWithValue("@ImagePath", imageLink);
                     cmd.Parameters.AddWithValue("@CategoryID", DropDownList1.SelectedItem.Value);
 
-
-
-                    OleDbConnection con = new OleDbConnection(connStr);
+                    OleDbConnection con = new OleDbConnection(connectionString);
                     con.Open();
-                    // OleDbCommand cmd = new OleDbCommand();
                     cmd.CommandText = query;
                     cmd.Connection = con;
                     cmd.ExecuteNonQuery();
-                    getproductid();
+                    GetProductId();
                     Label1.Text = "Product Has Been Successfully Added";
                     Label2.Text = "";
                     Label3.Text = "";
@@ -126,34 +81,24 @@ namespace DXCsampleEcommerce
                     TextBox2.Text = "";
                     TextBox1.Text = "";
                     TextBox7.Text = "";
-                    //DropDownList1.SelectedIndex = -1;
                     DropDownList1.SelectedIndex = -1;
-
-
                     //Response.AppendHeader("Refresh", "2;url=WebForm1.aspx");
-
                 }
-                
-
             }
-
-
         }
 
-        private Boolean uploadimage()
+        private bool UploadImage()
         {
-            Boolean imagesaved = false;
+            bool imageSaved = false;
             if (FileUpload1.HasFile == true)
             {
+                string contentType = FileUpload1.PostedFile.ContentType;
 
-                String contenttype = FileUpload1.PostedFile.ContentType;
-
-                if (contenttype == "image/jpeg")
+                if (contentType == "image/jpeg")
                 {
-
                     FileUpload1.SaveAs(Server.MapPath("~/Images/") + Label2.Text + ".jpg");
-                    imagelink = "~/Images/" + Label2.Text + ".jpg";
-                    imagesaved = true;
+                    imageLink = "~/Images/" + Label2.Text + ".jpg";
+                    imageSaved = true;
                 }
                 else
                 {
@@ -161,27 +106,21 @@ namespace DXCsampleEcommerce
                 }
 
             }
-
             else
             {
                 Label3.Text = "You have not selected any file - Browse and Select File First";
             }
-
-            return imagesaved;
-
+            return imageSaved;
         }
 
-        public void getproductid()
+        public void GetProductId()
         {
-
-            OleDbConnection con = new OleDbConnection(connStr);
+            OleDbConnection con = new OleDbConnection(connectionString);
             OleDbCommand cmd = new OleDbCommand();
-            String myquery = "select ProductID from Product";
-
-            cmd.CommandText = myquery;
+            string query = "select ProductID from Product";
+            cmd.CommandText = query;
             cmd.Connection = con;
             OleDbDataAdapter da = new OleDbDataAdapter();
-
             da.SelectCommand = cmd;
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -189,19 +128,13 @@ namespace DXCsampleEcommerce
             if (ds.Tables[0].Rows.Count < 1)
             {
                 Label2.Text = "1";
-
             }
             else
             {
-
-
-                OleDbConnection con1 = new OleDbConnection(connStr);
-
-
-
-                String myquery1 = "select max(ProductID) from Product";
+                OleDbConnection con1 = new OleDbConnection(connectionString);
+                string query1 = "select max(ProductID) from Product";
                 OleDbCommand cmd1 = new OleDbCommand();
-                cmd1.CommandText = myquery1;
+                cmd1.CommandText = query1;
                 cmd1.Connection = con1;
                 OleDbDataAdapter da1 = new OleDbDataAdapter();
                 da1.SelectCommand = cmd1;
@@ -210,7 +143,7 @@ namespace DXCsampleEcommerce
                 Label2.Text = ds1.Tables[0].Rows[0][0].ToString();
                 int a;
                 a = Convert.ToInt16(Label2.Text);
-                a = a + 1;
+                a += 1;
                 Label2.Text = a.ToString();
                 con1.Close();
             }
